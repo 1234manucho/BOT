@@ -1,0 +1,28 @@
+import importlib.util
+
+# List of required modules to check
+REQUIRED_MODULES = [
+    "os",
+    "asyncio",
+    "aiogram",
+    "dotenv",
+    "aiogram.enums",
+    "aiogram.client.default",
+    "aiogram.types",
+    "aiogram.filters",
+    "storage.database",
+    "poison.gemini",
+    "poison.checks"
+]
+
+def check_dependencies():
+    """Check if all required modules are available."""
+    print("🔍 Checking dependencies...\n")
+    for module in REQUIRED_MODULES:
+        # Attempt to find the module specification
+        spec = importlib.util.find_spec(module)
+        if spec is not None:
+            print(f"✅ {module} is available.")
+        else:
+            print(f"❌ {module} is missing.")
+    print("\nDependency check complete.\n")
